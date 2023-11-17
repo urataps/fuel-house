@@ -23,12 +23,6 @@ const _abi = {
     },
     {
       "typeId": 1,
-      "type": "str[<n>]",
-      "components": null,
-      "typeParameters": null
-    },
-    {
-      "typeId": 2,
       "type": "u64",
       "components": null,
       "typeParameters": null
@@ -40,7 +34,7 @@ const _abi = {
       "name": "counter",
       "output": {
         "name": "",
-        "type": 2,
+        "type": 1,
         "typeArguments": null
       },
       "attributes": [
@@ -67,20 +61,15 @@ const _abi = {
             "read",
             "write"
           ]
+        },
+        {
+          "name": "payable",
+          "arguments": []
         }
       ]
     }
   ],
-  "loggedTypes": [
-    {
-      "logId": 0,
-      "loggedType": {
-        "name": "",
-        "type": 1,
-        "typeArguments": null
-      }
-    }
-  ],
+  "loggedTypes": [],
   "messagesTypes": [],
   "configurables": []
 }

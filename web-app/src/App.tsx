@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { CounterContractAbi__factory } from "./contracts";
+import { BaseAssetId } from "fuels";
 
 const CONTRACT_ID =
-  "0x76dd875f31a17f8214b14bec8b7ad4902402e22a49ca297b49b5b308a0eca180";
+  "0x47465e2d256bc7e177923bcc4d47ce8861742eceeb9fc0e176f56839589d68c9";
 
 function App() {
   const [account, setAccount] = useState<string>();
@@ -40,7 +41,13 @@ function App() {
     if (window.fuel && account) {
       const wallet = await window.fuel.getWallet(account);
       const contract = CounterContractAbi__factory.connect(CONTRACT_ID, wallet);
-      await contract.functions.increment().txParams({ gasPrice: 1 }).call();
+      await contract.functions
+        .increment()
+        .callParams({
+          forward: [1, BaseAssetId],
+        })
+        .txParams({ gasPrice: 1 })
+        .call();
       getCounter();
     }
   };
